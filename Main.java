@@ -1,4 +1,4 @@
-package sakankom;
+package sakankomsofttt;
 
 
 import java.io.*;
@@ -37,9 +37,9 @@ public class Main {
     	        System.out.print("enter passs");
     	        us.setPassword(in.nextLine());
     	        t.searchTenantforLogIn(us.getId(), us.getPassword());
-*/				System.out.println("******************************************");
+*/				System.out.println("******************************************************************");
     	        System.out.println("Welcome to SACANKOM :)");
-    	        System.out.println("******************************************");
+    	        System.out.println("******************************************************************");
     	        System.out.println("Please choose the number of survice u want :");
     	        System.out.println("1- SignUp");
     	        System.out.println("2- Sign In");
@@ -48,10 +48,12 @@ public class Main {
     	        int n=input1.nextInt();
 
     	if (n==1) {
+    		System.out.println("******************************************************************");
     	    System.out.println("SignUp as :");
     	    System.out.println("1- Owner");
     	    System.out.println("2- Tenant");
     	    System.out.println("3- Admin");
+    	    System.out.println("******************************************************************");
     	    Scanner input2=new Scanner(System.in);
     	    int n1=input2.nextInt();
     	    if (n1==1)
@@ -64,18 +66,33 @@ public class Main {
     	}
 
     	else if (n==2) {
-    		
+    		System.out.println("******************************************************************");
     		System.out.println("SignIn as :");
     	    System.out.println("1- Owner");
     	    System.out.println("2- Tenant");
     	    System.out.println("3- Admin");
+    	    System.out.println("******************************************************************");
     	    Scanner in = new Scanner(System.in);
     		int h=in.nextInt();
     	    if (h==2) {
-    	    	
+    	    	System.out.println("******************************************************************");
     	    	        t.searchTenantforLogIn(us.getName(), us.getPassword());
     	    	       t.book();
     	}
+    	    if (h==3) {
+    	    	System.out.println("******************************************************************");
+    	    	System.out.println("Choose the number of survice you want :");
+    	    	System.out.println("1- View all bookings via the system");
+    	    	System.out.println("2- Update Bookings");
+    	    	System.out.println("******************************************************************");
+    	    	Scanner input3=new Scanner(System.in);
+        	    int n3=input3.nextInt();
+        	    if (n3==1)
+        	    	t.printbook();
+    	    }///////////admin menue
+    	    
+    	    
+    	    
     	        else if (n==3)
     	   System.out.println("your out !");
 
