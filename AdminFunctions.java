@@ -1,5 +1,6 @@
-package sakankom;
+package sakankomsofttt;
 import java.util.ArrayList;
+
 public class AdminFunctions {
 	
 	public static ArrayList <Booking> bn=new ArrayList<Booking>();
