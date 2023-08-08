@@ -1,4 +1,4 @@
-package sakankom;
+package sakankomsofttt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,9 +142,9 @@ public class TenantFunction {
             	
             	if (id.equals(tenants.get(i).getId()))
             		//System.out.println("cannot add "); 
-            		flag=false;
+            		flag=true;
             	else {
-            		continue;
+            		flag=false;;
             	}
             
           /*  if (i==tenants.size() - 1 && !(id.equals(tenants.get(i).getId()))){
@@ -152,7 +152,7 @@ public class TenantFunction {
             }*/	
             
             
-            	if(flag==false) { 
+            	if(flag==true) { 
             		System.out.println("not added, there is user who already hs this id, please try again");
             	addTenant(id);
             	}
@@ -164,6 +164,7 @@ public class TenantFunction {
                     //  Tenant t=new Tenant(id, name, username, password);
                       tenants.add(t);	
                       System.out.println("added successfully !");
+                      break;
             	}
             		
             }
@@ -210,11 +211,6 @@ public class TenantFunction {
             	//System.out.println(" Didn't Logged in SUCCESSFULLY :( , please try again !");
 
                 
-               /* for (int i = 0; i < tenants.size(); i++) {
-                 *///   if (name.equals(tenants.get(i).getName()) && password.equals(tenants.get(i).getPassword())) {
-                    //	System.out.println(" Logged in SUCCESSFULLY :) ");
-                    //	System.out.println("Here are the available housing");
-                    //	System.out.println("---------------------------------------------------");
                     	return flag;
 
                     
@@ -257,30 +253,109 @@ public class TenantFunction {
 
         }
         
+        public static void mymenue() {
+        	System.out.println("******************************************************************");
+			System.out.println("You have booked house now, welcome your new house !!! COGRATES !!!");
+			System.out.println("******************************************************************");
+    		System.out.println("Chosoe the number of the survice you want :");
+    		System.out.println("1- Furniture services.");
+    		System.out.println("2- View your personal informations.");
+    		System.out.println("3- View Owner informations.");
+    		System.out.println("******************************************************************");
+			Scanner ser=new Scanner(System.in);
+			String ser1=ser.nextLine();
+			if (ser1.equals("1")) {
+			System.out.println("Choose the number of the survice u want :");
+			System.out.println("1- View the advertised Furniture.");
+			System.out.println("2-Advertise your own Furniture.");
+			
+			Scanner fu=new Scanner(System.in);
+			String fu1=fu.nextLine();
+			if (fu1.equals("1")) {
+				
+				fillingAndPrintingFurnitures();
+			}
+			System.out.println("Do you want to add your own Furnitures ??? if yes enter yes else enter no ");
+			Scanner yon=new Scanner(System.in);
+			String yon1=yon.nextLine();
+			if (yon1.equals("yes"))
+				addFurniture();
+			
+			if (fu1.equals("2")) {
+				
+				addFurniture();
+				
+			}
+			
+			System.out.println("******************************************************************");
+		}
+        }
+        
+        
+        
         public static void book() {
+        	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        	h.add(new House("12","10","2","2000$","1","nablus","5","studentHousing","11"));
+            h.add(new House("10","11","3","2500$","0","nablus","6","familyHousing","12"));
+            h.add(new House("3","13","4","3000$","1","nablus","6","familyHousing","13"));
+            h.add(new House("5","8","2","2500$","0","nablus","5","studentHousing","11"));
+            h.add(new House("14","7","5","2000$","1","nablus","6","familyHousing","14"));
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         	System.out.println("Enter the number of house you want to book :");
         	Scanner intr=new Scanner(System.in);
         	String vv=intr.nextLine();
-        	boolean flag=false;
+        	boolean flagNum=false;
+        	boolean flagStatu=false;
         	//int thenum = 0;
-        	for (int i=0;i<bookings.size();i++) {
-        	if (vv.equals(bookings.get(i).getResiNum())) {
-        		//if (vv.equals("12") || vv.equals("3") || vv.equals("14"))
-        			
-        		flag=true;
-        		//thenum=i;
-        	break;
+        	for (int i=0;i<h.size();i++) {
+        		if (vv.equals(h.get(i).getHouse_id())) {
+        			flagNum=true;
+        		if (h.get(i).getType().equals("studentHousing")) {
+        			flagStatu=true;
+        		}
+        		break;
+        		}
         	}
-        	else
-        		flag=false;
-        
-        	}
-        	if (flag==true) {
         		
-        		bookings.add(new Booking("11","12","10"));
-        		bookings.add(new Booking("13","3","20"));
-        		bookings.add(new Booking("14","14","30"));
-        		System.out.println("Booked Successfully !");
+        	
+        	if (flagNum) {
+        		if(flagStatu) {
+        			Booking b =new Booking();
+        			b.sethouseNumber(vv);
+        			b.setOwnerNumber("58");
+        			b.settenantNumber("10");
+        			
+        			bookings.add(b);
+        			
+        			System.out.println("Booked Successfully !! :");
+        			System.out.println("The house u choosed is a Student Housing, you should fill some data fo it :");
+        			System.out.println("enter yous age and your university major :");
+        			System.out.println("Age :");
+        			Scanner age=new Scanner(System.in);
+        			String age1=age.nextLine();
+        			System.out.println("University Major");
+        			Scanner Major=new Scanner(System.in);
+        			String Major1=Major.nextLine();
+        			System.out.println("Data Stored Successfully !!!");
+        			
+        			mymenue();
+        			
+        		}
+        		else {
+        			mymenue();
+        			
+        			
+        	}
+        		
+        	}
+        	if(!flagNum)
+        		
+        		System.out.println("invalid input, try again");
+        		//bookings.add(new Booking("11","12","10"));
+        		//bookings.add(new Booking("13","3","20"));
+        	//	bookings.add(new Booking("14","14","30"));
+        		//System.out.println("Booked Successfully !");
         	//break;
         		/*for (int i=0;i<bookings.size();i++) {
         			System.out.println("Owner number" + bookings.get(i).getOwnerNumber());
@@ -292,14 +367,14 @@ public class TenantFunction {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        	}
+        	
         
         		
         		
         		
         	
         		
-        		if (vv.equals("12")) {
+        		/*if (vv.equals("12")) {
         			System.out.println("******************************************************************");
         			System.out.println("The house u choosed is a Student Housing, you should fill some data fo it :");
         			System.out.println("enter yous age and your university major :");
@@ -310,8 +385,8 @@ public class TenantFunction {
         			Scanner Major=new Scanner(System.in);
         			String Major1=Major.nextLine();
         			System.out.println("Data Stored Successfully !!!");
-        		}
-        		if (vv.equals("12") || vv.equals("3") || vv.equals("14") ) {
+        		}*/
+        		/*if (vv.equals("12") || vv.equals("3") || vv.equals("14") ) {
         			System.out.println("******************************************************************");
         			System.out.println("You have booked house now, welcome your new house !!! COGRATES !!!");
         			System.out.println("******************************************************************");
@@ -346,8 +421,8 @@ public class TenantFunction {
         			}
         			
         			System.out.println("******************************************************************");
-        		}
-        			
+        		}*/
+        			/*
         		if (ser1.equals("2")) {	
         		
         //	Scanner p=new Scanner(System.in);
@@ -360,7 +435,7 @@ public class TenantFunction {
         			System.out.println("Username : roaaAboLibdeh");
         			System.out.println("Birth of date : 3-12-2022");
         			System.out.println("Age : 20");
-        	
+        		}}
         		
         		/*
         		 * c.setId("10");
@@ -389,11 +464,11 @@ public class TenantFunction {
         		 * */	
         	
         		
-        	}
+        	/*}*/
         	
         	
         	
-}
+//}
         
      
         	}
@@ -418,9 +493,12 @@ public class TenantFunction {
     		bookings.add(new Booking("13","3","20"));
     		bookings.add(new Booking("14","14","30"));
         for (int i=0;i<bookings.size();i++) {
-			System.out.println("Owner number" + bookings.get(i).getOwnerNumber());
-			System.out.println("house number" + bookings.get(i).getOtenantNumber());
-			System.out.println("Tenant number" + bookings.get(i).getResiNum());
+        	//for (Booking book : bookings) {
+                System.out.println("Owner ID: " + bookings.get(i).getOwnerNumber());
+                System.out.println("Tenant ID: " + bookings.get(i).getOtenantNumber());
+                System.out.println("House ID: " + bookings.get(i).getResiNum());
+                System.out.println();
+           // }
         
         }
         
