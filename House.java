@@ -1,4 +1,4 @@
-package sakankom;
+package sakankomsofttt;
 
 public class House {
 	 private String house_id, residenceId, floorId, monthlyRent, availability,location,numberOfRooms,type,OwnerId;
